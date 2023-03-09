@@ -5,12 +5,12 @@ function my_wp_breadcrumbs()
     /* === Options === */
     $text['home'] = __('Home'); // "Home" link text
     $text['category'] = __('%s'); // text for the category page
-    $text['search'] = __('Результаты поиска по запросу "%s"'); // text for the search results page
-    $text['tag'] = __('Записи с тегом "%s"'); // text for the tag page
-    $text['author'] = __('Статьи автора %s'); // text for the author page
-    $text['404'] = __('Ошибка 404'); // text for a 404 page
-    $text['page'] = __('Страница %s'); // text 'Page N'
-    $text['cpage'] = __('Страница комментариев %s'); // text 'Comments page N'
+    $text['search'] = __('Search results by query "%s"'); // text for the search results page
+    $text['tag'] = __('Posts with tags "%s"'); // text for the tag page
+    $text['author'] = __('Author\'s  %s articles'); // text for the author page
+    $text['404'] = __('Error 404'); // text for a 404 page
+    $text['page'] = __('Page %s'); // text 'Page N'
+    $text['cpage'] = __('Comments page %s'); // text 'Comments page N'
 
     $wrap_before = '<ul class="breadcrumbs__list" itemscope="" itemtype="http://schema.org/BreadcrumbList">'; // opening wrap tag
     $wrap_after = '</ul>'; // closing wrapper tag
