@@ -1,3 +1,3 @@
 # "Breadcrumbs" for WordPress
-author: Dimox, DevKO \r\n
+author: Dimox, DevKO
 version: 2023.03.09
