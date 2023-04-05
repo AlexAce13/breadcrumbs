@@ -1,5 +1,14 @@
 <?php
-
+/*
+ * Plugin Name: Breadcrumbs
+ * Description: breadcrumbs for wp
+ * Version: 1.2.0
+ * Author: Dev KO
+ * Text Domain: breadcrumbs
+ * Domain Path: /languages
+ * Network: true
+ */
+include plugin_dir_path( __FILE__ ).'options.php';
 function my_wp_breadcrumbs()
 {
 
@@ -13,11 +22,31 @@ function my_wp_breadcrumbs()
     $text['page'] = __('Page %s'); // text 'Page N'
     $text['cpage'] = __('Comments page %s'); // text 'Comments page N'
 
-    $wrap_before = '<ul class="breadcrumbs__list" itemscope="" itemtype="http://schema.org/BreadcrumbList">'; // opening wrap tag
-    $wrap_after = '</ul>'; // closing wrapper tag
+    if(get_option('container_class')){
+        $breadcrumbs_container_class = get_option('container_class');
+    } else {
+        $breadcrumbs_container_class = '';
+    }
+
+    if(get_option('breadcrumbs_list_class')){
+        $breadcrumbs_list_class = get_option('breadcrumbs_list_class');
+    } else {
+        $breadcrumbs_list_class = '';
+    }
+
+    if(get_option('breadcrumbs_item_class')){
+        $breadcrumbs_item_class = get_option('breadcrumbs_item_class');
+    } else {
+        $breadcrumbs_item_class = '';
+    }
+
+//	var_dump($breadcrumbs_item_class);
+
+    $wrap_before = '<div class="breadcrumbs__container '.$breadcrumbs_container_class.'"><ul class="breadcrumbs__list '.$breadcrumbs_list_class.'" itemscope="" itemtype="http://schema.org/BreadcrumbList">'; // opening wrap tag
+    $wrap_after = '</ul></div>'; // closing wrapper tag
     $sep = '<li class="breadcrumbs__separator">-</li>';
 
-    $before = '<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumbs__item" >';
+    $before = '<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumbs__item '.$breadcrumbs_item_class.'" >';
     if (is_post_type_archive()) {
         $post_type = get_post_type(get_the_ID());
         $before .= '<a class="breadcrumbs__link breadcrumbs__current" href="' . get_post_type_archive_link($post_type) . '" rel="nofollow" itemprop="item"><span itemprop="name">';
@@ -31,13 +60,13 @@ function my_wp_breadcrumbs()
 
     $show_on_home = 1; // 1 - show "breadcrumbs" on the main page, 0 - do not show
     $show_home_link = 1; // 1 - show "Home" link, 0 - do not show
-    $show_current = 1; // 1 - show the name of the current page, 0 - do not show
-    $show_last_sep = 1; // 1 - show last separator when title of the current page is not shown, 0 - do not show
+    $show_current = get_option('show_current'); // 1 - show the name of the current page, 0 - do not show
+    $show_last_sep = get_option('show_last_sep'); // 1 - show last separator when title of the current page is not shown, 0 - do not show
     /* === END OF OPTIONS === */
 
     global $post;
     $home_url = home_url('/');
-    $link = '<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumbs__item">';
+    $link = '<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumbs__item '.$breadcrumbs_item_class.'">';
     $link .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
     $link .= '<meta itemprop="position" content="%3$s" />';
     $link .= '</li>';
@@ -244,3 +273,8 @@ function my_wp_breadcrumbs()
 
     }
 }
+
+function my_sc_breadcrumbs() {
+    my_wp_breadcrumbs();
+}
+add_shortcode('breadcrumbs', 'my_sc_breadcrumbs');

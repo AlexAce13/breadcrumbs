@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29638d48-ac74-4c93-9d0f-b38c172439e2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/options.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bredcrumbs.php" beforeDir="false" afterPath="$PROJECT_DIR$/bredcrumbs.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +43,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -49,7 +57,9 @@
       <option name="presentableId" value="Default" />
       <updated>1678364193395</updated>
       <workItem from="1678364194873" duration="1466000" />
-      <workItem from="1678367031105" duration="1062000" />
+      <workItem from="1678367031105" duration="1361000" />
+      <workItem from="1678699397052" duration="1000" />
+      <workItem from="1680676103266" duration="1762000" />
     </task>
     <servers />
   </component>
