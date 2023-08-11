@@ -5,7 +5,6 @@
  * Version: 1.2.0
  * Author: Dev KO
  * Text Domain: breadcrumbs
- * Domain Path: /languages
  * Network: true
  */
 include plugin_dir_path( __FILE__ ).'options.php';
