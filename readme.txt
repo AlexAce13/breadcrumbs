@@ -1,4 +1,4 @@
-=== Easy Breadcrumbs ===
+=== Presto Breadcrumbs ===
 Contributors: devko1993
 Tags: breadcrumbs
 Requires at least: 4.7

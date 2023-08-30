@@ -1,7 +1,7 @@
 <?php
 /*
  *
- * Plugin Name: Easy Breadcrumbs
+ * Plugin Name: Presto Breadcrumbs
  * Description: breadcrumbs for wp
  * Version: 1.1
  * Author: Dev KO
