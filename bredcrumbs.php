@@ -1,5 +1,6 @@
 <?php
 /*
+ *
  * Plugin Name: Easy Breadcrumbs
  * Description: breadcrumbs for wp
  * Version: 1.1

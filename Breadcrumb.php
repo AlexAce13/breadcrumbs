@@ -1,5 +1,4 @@
 <?php
-
 abstract class Breadcrumbs {
 	protected $text;
 	protected $breadcrumbs_container_class;

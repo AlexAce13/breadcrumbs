@@ -1,4 +1,5 @@
 <?php
+
 // Hook for adding admin menus
 add_action('admin_menu', 'mt_add_pages');
 function mt_add_pages() {
