@@ -166,27 +166,31 @@ class PostBreadcrumbs extends Breadcrumbs {
 }
 
 class CustomPostTypeBreadcrumbs extends Breadcrumbs {
-	public function display( $position = 0 ) {
+    public function display( $position = 0 ) {
 
-		$link = '<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumbs__item ' . $this->breadcrumbs_item_class . '">';
-		$link .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
-		$link .= '<meta itemprop="position" content="%3$s" />';
-		$link .= '</li>';
+        $link = '<li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="breadcrumbs__item ' . $this->breadcrumbs_item_class . '">';
+        $link .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
+        $link .= '<meta itemprop="position" content="%3$s" />';
+        $link .= '</li>';
 
-		$before = $this->before . '<a class="breadcrumbs__link breadcrumbs__current" href="' . get_the_permalink() . '" rel="nofollow" itemprop="item"><span itemprop="name">';
+        $before = $this->before . '<a class="breadcrumbs__link breadcrumbs__current" href="' . get_the_permalink() . '" rel="nofollow" itemprop="item"><span itemprop="name">';
 
-		$this->position += 1;
-		$post_type      = get_post_type_object( get_post_type() );
-		if ( $position > 1 ) {
-			echo $this->sep;
-		}
-		echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
-		if ( $this->show_current ) {
-			echo $this->sep . $before . get_the_title() . sprintf( $this->after, $this->position + 1 );
-		} elseif ( $this->show_last_sep ) {
-			echo $this->sep;
-		}
-	}
+        $position += 1;
+        $post_type      = get_post_type_object( get_post_type() );
+        if ( $position > 1 ) {
+            echo $this->sep;
+        }
+        if( !empty(get_option( 'breadcrumbs_'.$post_type->name.'_custom_step_text' )) && !empty(get_option( 'breadcrumbs_'.$post_type->name.'_custom_step_link' )) ){
+            echo sprintf( $link, get_option( 'breadcrumbs_'.$post_type->name.'_custom_step_link' ), get_option( 'breadcrumbs_'.$post_type->name.'_custom_step_text' ), $position );
+        } else {
+            echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
+        }
+        if ( $this->show_current ) {
+            echo $this->sep . $before . get_the_title() . sprintf( $this->after, $position + 1 );
+        } elseif ( $this->show_last_sep ) {
+            echo $this->sep;
+        }
+    }
 }
 
 class ArchiveBreadcrumbs extends Breadcrumbs {
